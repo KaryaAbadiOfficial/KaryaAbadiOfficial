@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARYA ABADI - Percetakan & Outlet</title>
+    <!-- Menggunakan Font Google: Inter untuk tampilan modern -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Menggunakan RemixIcon untuk ikon yang rapi -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-red: #D32F2F; /* Merah Profesional */
+            --primary-red-hover: #B71C1C;
+            --accent-red: #FFEBEE;
+            --dark-black: #111111;
+            --dark-gray: #333333;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
+            --text-color: #2c3e50;
+            --border-radius: 8px;
+            --container-width: 1200px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ul { list-style: none; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center { text-align: center; }
+        .text-white { color: var(--white); }
+        .text-red { color: var(--primary-red); }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-red-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--dark-black);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--dark-black);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-red);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: var(--dark-black);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-red);
+        }
+
+        .mobile-toggle {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: var(--dark-black);
+            /* Gradient overlay to ensure text readability */
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://picsum.photos/seed/printing/1920/1080');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 120px 0 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: #ddd;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .feature-item i {
+            color: var(--primary-red);
+            font-size: 1.3rem;
+        }
+
+        /* --- PRODUCTS SECTION (Complex Grid) --- */
+        .products-section {
+            background-color: var(--light-gray);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--primary-red);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .category-icon {
+            width: 45px;
+            height: 45px;
+            background-color: var(--accent-red);
+            color: var(--primary-red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark-black);
+        }
+
+        .product-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 columns inside card */
+            gap: 10px;
+        }
+        
+        /* Single column for complex items */
+        .product-list.long-list {
+            grid-template-columns: 1fr;
+        }
+
+        .product-list li {
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .product-list li::before {
+            content: '•';
+            color: var(--primary-red);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Special style for E-Transaction to distinguish */
+        .product-card.etransaction-card {
+            background-color: #fff8f8;
+            border: 1px solid #ffebeb;
+        }
+        
+        .product-card.etransaction-card .category-header {
+            border-bottom-color: #ffdce0;
+        }
+
+        /* --- ORDERING STEPS --- */
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Connecting line */
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background-color: #ddd;
+            z-index: 0;
+            display: block;
+        }
+
+        .step-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            min-width: 150px;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background-color: var(--white);
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            font-weight: 800;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+
+        .step-item:hover .step-number {
+            background-color: var(--primary-red);
+            color: var(--white);
+        }
+
+        .step-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark-black);
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* --- ABOUT US --- */
+        .about-section {
+            background-color: var(--white);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            max-width: 900px;
+            line-height: 1.8;
+            color: var(--dark-gray);
+        }
+        
+        .about-text span {
+            color: var(--primary-red);
+        }
+
+        /* --- GALLERY --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonials {
+            background-color: var(--accent-red);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .rating {
+            color: #FFC107;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .reviewer {
+            font-weight: 700;
+            color: var(--dark-black);
+        }
+
+        /* --- CONTACT & FOOTER --- */
+        .contact-section {
+            background-color: var(--white);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 20px;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark-black);
+        }
+
+        .info-content p {
+            color: #666;
+        }
+
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .contact-form input:focus, 
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+
+        .map-embed {
+            margin-top: 30px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 300px;
+            width: 100%;
+        }
+
+        .map-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            background-color: var(--dark-black);
+            color: #aaa;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- FLOATING BUTTON --- */
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: transform 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: var(--dark-black);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+            }
+
+            .nav-links.active { display: flex; }
+            .mobile-toggle { display: block; }
+
+            .steps-container::before { display: none; }
+            .steps-container { flex-direction: column; align-items: center; }
+            .step-item { width: 100%; display: flex; gap: 20px; text-align: left; align-items: flex-start; }
+            .step-number { margin-bottom: 0; flex-shrink: 0; }
+            
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .product-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <!-- Menggunakan gambar logo yang di deskripsikan -->
+                <img src="https://z-cdn-media.chatglm.cn/files/1504d772-2518-4042-bedf-665e5878589a.png?auth_key=1870523185-2c058213ede046bda119245cc6b55d19-0-9c836e3f47abab84a30295219d60b493" alt="Logo Karya Abadi">
+                KARYA ABADI
+            </a>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <i class="ri-menu-line"></i>
+            </div>
+            <nav class="nav-links">
+                <a href="#beranda">Beranda</a>
+                <a href="#produk">Produk & Layanan</a>
+                <a href="#pemesanan">Cara Pesan</a>
+                <a href="#tentang">Tentang Kami</a>
+                <a href="#galeri">Galeri</a>
+                <a href="#kontak">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="beranda" class="hero">
+        <div class="container">
+            <h1>PERCETAKAN & OUTLET</h1>
+            </p>" Menghadirkan layanan Percetakan Profesional dan kemudahan dalam E-transaksi "</p>
+            
+            <div style="margin-bottom: 30px;">
+                <a href="#produk" class="btn btn-primary">
+                    <i class="ri-printer-line"></i> Pesan Sekarang
+                </a>
+                <a href="https://wa.me/" class="btn btn-outline">
+                    <i class="ri-whatsapp-line"></i> Chat WhatsApp
+                </a>
+            </div>
+
+            <div class="hero-features">
+                <div class="feature-item">
+                    <i class="ri-star-smile-line"></i> Produk Berkualitas
+                </div>
+                <div class="feature-item">
+                    <i class="ri-shield-check-line"></i> E-Transaksi Terpercaya
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUK & LAYANAN SECTION -->
+    <section id="produk" class="section-padding products-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Produk & Layanan</h2>
+            </div>
+
+            <div class="category-grid">
+                
+                <!-- 1. Produk Administrasi & Kantor -->
+                <div class="product-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="ri-briefcase-4-line"></i></div>
+                        <h3 class="category-title">Administrasi & Kantor</h3>
+                    </div>
+                    <ul class="product-list">
+                        <li>Kartu nama</li>
+                        <li>Kop surat</li>
+                        <li>Amplop (polos/logo)</li>
+                        <li>Map folder</li>
+                        <li>Nota / kwitansi / invoice</li>
+                        <li>Buku faktur</li>
+                        <li>Formulir NCR (2–4 ply)</li>
+                        <li>ID Card / kartu pegawai</li>
+                        <li>Stempel (flash / runaflek)</li>
+                    </ul>
+                </div>
+
+                <!-- 2. Produk Promosi & Marketing -->
+                <div class="product-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="ri-megaphone-line"></i></div>
+                        <h3 class="category-title">Promosi & Marketing</h3>
+                    </div>
+                    <ul class="product-list">
+                        <li>Brosur (A4, A5, lipat 2–3)</li>
+                        <li>Flyer / selebaran</li>
+                        <li>Poster</li>
+                        <li>Leaflet</li>
+                        <li>Company profile</li>
+                        <li>Katalog produk</li>
+                        <li>Price list</li>
+                        <li>Voucher / kupon</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Produk Label & Kemasan -->
+                <div class="product-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="ri-archive-line"></i></div>
+                        <h3 class="category-title">Label & Kemasan</h3>
+                    </div>
+                    <ul class="product-list long-list">
+                        <li>Stiker (vinyl, chromo, transparan, hologram)</li>
+                        <li>Label botol / makanan</li>
+                        <li>Hang tag</li>
+                        <li>Packaging box (dus makanan, dus produk)</li>
+                        <li>Paper bag (tas kertas)</li>
+                        <li>Standing pouch custom (print stiker)</li>
+                        <li>Seal label / segel</li>
+                    </ul>
+                </div>
+
+                <!-- 4. Produk Buku & Jilid -->
+                <div class="product-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="ri-book-open-line"></i></div>
+                        <h3 class="category-title">Buku & Jilid</h3>
+                    </div>
+                    <ul class="product-list">
+                        <li>Buku tulis</li>
+                        <li>Buku agenda</li>
+                        <li>Buku tahunan</li>
+                        <li>Buku Yasin & tahlil</li>
+                        <li>Buku pelajaran</li>
+                        <li>Modul / diktat</li>
+                        <li>Skripsi / tesis (hard/soft)</li>
+                        <li>Kalender meja & dinding</li>
+                    </ul>
+                </div>
+
+                <!-- 5. Produk Digital Printing & Merchandise -->
+                <div class="product-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="ri-t-shirt-line"></i></div>
+                        <h3 class="category-title">Digital & Merchandise</h3>
+                    </div>
+                    <ul class="product-list">
+                        <li>Banner / roll banner</li>
+                        <li>Spanduk / baliho</li>
+                        <li>X-banner / Y-banner</li>
+                        <li>Backdrop / banner event</li>
+                        <li>Poster foto</li>
+                        <li>Cetak foto</li>
+                        <li>Mug printing</li>
+                        <li>Kaos sablon / DTF</li>
+                        <li>Totebag</li>
+                        <li>Pin / gantungan kunci</li>
+                    </ul>
+                </div>
+
+                <!-- 6. Produk Outdoor & Advertising -->
+                <div class="product-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="ri-store-3-line"></i></div>
+                        <h3 class="category-title">Outdoor & Advertising</h3>
+                    </div>
+                    <ul class="product-list">
+                        <li>Neon box</li>
+                        <li>Papan nama toko</li>
+                        <li>Akrilik (huruf timbul, display)</li>
+                        <li>Signage / rambu</li>
+                        <li>Sticker mobil / motor</li>
+                        <li>One way vision</li>
+                        <li>Cutting sticker</li>
+                    </ul>
+                </div>
+
+                <!-- 7. Produk Event & Undangan -->
+                <div class="product-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="ri-mail-send-line"></i></div>
+                        <h3 class="category-title">Event & Undangan</h3>
+                    </div>
+                    <ul class="product-list">
+                        <li>Undangan pernikahan</li>
+                        <li>Undangan digital (plus cetak)</li>
+                        <li>Kartu ucapan</li>
+                        <li>Buku tamu</li>
+                        <li>Souvenir cetak</li>
+                        <li>Tiket event</li>
+                        <li>ID card event & lanyard</li>
+                    </ul>
+                </div>
+
+                <!-- 8. Produk Religi & Sosial -->
+                <div class="product-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="ri-book-2-line"></i></div>
+                        <h3 class="category-title">Religi & Sosial</h3>
+                    </div>
+                    <ul class="product-list">
+                        <li>Buku Yasin</li>
+                        <li>Buku doa</li>
+                        <li>Kartu tahlil</li>
+                        <li>Spanduk pengajian</li>
+                        <li>Sertifikat wakaf / donasi</li>
+                    </ul>
+                </div>
+
+                <!-- 9. Layanan Tambahan Percetakan -->
+                <div class="product-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="ri-tools-line"></i></div>
+                        <h3 class="category-title">Finishing & Tambahan</h3>
+                    </div>
+                    <ul class="product-list">
+                        <li>Desain grafis</li>
+                        <li>Laminasi (doff / glossy)</li>
+                        <li>Jilid spiral / lem panas</li>
+                        <li>Cutting & finishing</li>
+                        <li>Packing & pengiriman</li>
+                    </ul>
+                </div>
+
+                <!-- 11. E-Transaksi: Pembayaran -->
+                <div class="product-card etransaction-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="ri-bill-line"></i></div>
+                        <h3 class="category-title">Layanan Pembayaran</h3>
+                    </div>
+                    <ul class="product-list">
+                        <li>Listrik PLN (Token & Pascabayar)</li>
+                        <li>Air PDAM</li>
+                        <li>BPJS Kesehatan</li>
+                        <li>TV kabel & Internet</li>
+                        <li>Telepon & Pascabayar</li>
+                    </ul>
+                </div>
+
+                <!-- 12. E-Transaksi: Pulsa & Game -->
+                <div class="product-card etransaction-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="ri-gamepad-line"></i></div>
+                        <h3 class="category-title">Pulsa, Data & Game</h3>
+                    </div>
+                    <ul class="product-list">
+                        <li>Isi ulang pulsa semua operator</li>
+                        <li>Paket data internet</li>
+                        <li>Top up game (MLBB, FF, PUBG)</li>
+                        <li>Voucher game & hiburan</li>
+                        <li>Paket telepon & SMS</li>
+                    </ul>
+                </div>
+
+                <!-- 13. E-Transaksi: Keuangan Digital -->
+                <div class="product-card etransaction-card">
+                    <div class="category-header">
+                        <div class="category-icon"><i class="ri-wallet-3-line"></i></div>
+                        <h3 class="category-title">Keuangan Digital</h3>
+                    </div>
+                    <ul class="product-list">
+                        <li>Transfer antar bank</li>
+                        <li>Top up E-Wallet (DANA, OVO, GoPay, dll)</li>
+                        <li>Pembayaran cicilan & multifinance</li>
+                        <li>Pembelian voucher digital</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CARA PEMESANAN -->
+    <section id="pemesanan" class="section-padding">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Cara Pemesanan</h2>
+                <p class="section-subtitle">Langkah mudah untuk mendapatkan produk cetak berkualitas.</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h4 class="step-title">Pilih Produk</h4>
+                        <p class="step-desc">Tentukan jenis layanan yang Anda butuhkan.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h4 class="step-title">Konsultasi</h4>
+                        <p class="step-desc">Hubungi kami via WhatsApp untuk desain & spesifikasi.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h4 class="step-title">Konfirmasi</h4>
+                        <p class="step-desc">Setujui harga dan lakukan pembayaran.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h4 class="step-title">Proses Cetak</h4>
+                        <p class="step-desc">Kami memproses pesanan dengan cepat & rapi.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">5</div>
+                    <div>
+                        <h4 class="step-title">Selesai</h4>
+                        <p class="step-desc">Ambil di outlet atau kami kirim ke lokasi Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TENTANG KAMI -->
+    <section id="tentang" class="section-padding about-section">
+        <div class="container about-content">
+            <h2 class="section-title">Tentang Kami</h2>
+            <div class="about-text">
+                <p><strong>KARYA ABADI</strong><p>
+                <p>Penyedia layanan percetakan dan e-transaksi yang berkomitmen menghadirkan solusi praktis, cepat, dan terpercaya. Kami melayani berbagai kebutuhan cetak berkualitas seperti dokumen, materi promosi, dan keperluan usaha, serta layanan e-transaksi yang memudahkan aktivitas pembayaran dan pengisian digital. Dengan mengutamakan ketepatan, pelayanan ramah, dan hasil terbaik, siap menjadi mitra andalan untuk kebutuhan personal maupun bisnis Anda..</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERI -->
+    <section id="galeri" class="section-padding" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Galeri</h2>
+                <p class="section-subtitle">Beberapa hasil cetakan dan suasana outlet kami.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/print1/400/300" alt="Hasil Cetak">
+                    <div class="gallery-caption">Hasil Cetak Berkualitas</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/print2/400/300" alt="Proses Produksi">
+                    <div class="gallery-caption">Proses Produksi</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/shop/400/300" alt="Outlet Toko">
+                    <div class="gallery-caption">Outlet Karya Abadi</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/banner/400/300" alt="Banner & Spanduk">
+                    <div class="gallery-caption">Banner & Spanduk</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONI -->
+    <section id="testimoni" class="section-padding testimonials">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Testimoni</h2>
+                <p class="section-subtitle">Apa kata mereka tentang layanan Karya Abadi.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                    <p class="review-text">"Hasil cetakan kartu nama sangat rapi dan warnanya tajam. Pelayanan juga cepat. Recommended!"</p>
+                    <p class="reviewer">- Tarsono</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                    <p class="review-text">"Senang ada outlet yang bisa buat bayar listrik dan cetak undangan sekaligus. Sangat membantu."</p>
+                    <p class="reviewer">- Icih</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i>
+                    </div>
+                    <p class="review-text">"Spanduk untuk acara desa saya selesai tepat waktu. Harganya juga bersahabat."</p>
+                    <p class="reviewer">- Wahyu Sulaeman</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="kontak" class="section-padding contact-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Hubungi Kami</h2>
+                <p class="section-subtitle">Silakan berkonsultasi atau kunjungi.</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon"><i class="ri-map-pin-line"></i></div>
+                        <div class="info-content">
+                            <h4>Alamat Outlet</h4>
+                            <p>Rawameneng, Blanakan - Subang </p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="ri-whatsapp-line"></i></div>
+                        <div class="info-content">
+                            <h4>WhatsApp</h4>
+                            <p>Owner : 0851-1712-4247</p>
+                            <p>Admin : 0821-1732-5061</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon"><i class="ri-time-line"></i></div>
+                        <div class="info-content">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Minggu : 09.00 - 21.00 WIB</p>
+                            <p>Hari Jum'at (Tutup/Libur)</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Embed Google Maps Placeholder -->
+                    <div class="map-embed">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495.7601111501847!2d107.61112703185273!3d-6.253072787371199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69670a30e5d761%3A0x8101a551ca87508b!2sPercetakan%20%2F%20Outlet%20Karya%20Abadi%20(Karyana)!5e0!3m2!1sid!2sid!4v1770529556677!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Pesan Anda telah terkirim! Kami akan segera menghubungi Anda.');">
+                        <h3>Kirim Pesan</h3>
+                        <input type="text" placeholder="Nama Lengkap" required>
+                        <input type="email" placeholder="Alamat Email" required>
+                        <input type="tel" placeholder="Nomor Telepon / WhatsApp" required>
+                        <textarea rows="5" placeholder="Tulis pesan atau kebutuhan cetak Anda..." required></textarea>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 KARYA ABADI - Percetakan & Outlet E-Transaksi. All Rights Reserved.</p>
+            <div style="margin-top: 10px; font-size: 1.2rem;">
+                <a href="#" style="margin: 0 10px;"><i class="ri-facebook-circle-fill"></i></a>
+                <a href="#" style="margin: 0 10px;"><i class="ri-instagram-fill"></i></a>
+                <a href="#" style="margin: 0 10px;"><i class="ri-tiktok-fill"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/" class="floating-wa" target="_blank" title="Chat WhatsApp">
+        <i class="ri-whatsapp-line"></i>
+    </a>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.classList.toggle('active');
+        }
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Navbar Scroll Effect (Optional polish)
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = "0 4px 20px rgba(0,0,0,0.2)";
+            } else {
+                header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+            }
+        });
+    </script>
+</body>
+</html>
