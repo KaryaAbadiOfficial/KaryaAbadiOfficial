@@ -1,3 +1,3 @@
 # KARYA ABADI
 
-Percetakan & E-Transaksi
+Percetakan & Outlet
